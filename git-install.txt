@@ -7,6 +7,20 @@
   2.3 s CodePlex potegni in namesti git-credential-winstore, če ti crashne, probaj namestit še iz git basha (cd do folderja, nato ime fila)
   2.4 nastavi svoje github ime in mail z (git config —global user.name "Your Name Here") in (git config —global user.email "your_email@youremail.com")
   2.5 git init, da ustvari skrito git mapo
-  2.6 git pull https://github.com/DreadBoy/rattle-sock.git, da pullaš
-  2.7 WORK TILL YOU DROP!
-  2.8 git push
+  2.6 git remote add origin https://github.com/DreadBoy/rattle-sock.git poveste, da je cilj commitanja moj repozitorij
+3. uporabljaj
+  3.1 git pull https://github.com/DreadBoy/rattle-sock.git, da ustvariš lokalno kopijo
+  3.2 WORK TILL YOU DROP!
+  3.3 git add <ime fila> | to doda fajl za version control
+  3.4 git commit -m 'komentar' shranite spremembo, ki je še vedno samo lokalna
+  3.5 git push origin master | svojo lokalno kopijo prenesete v repozitorij TO DELATE SAMO PREDEN SE MENJA VODJA, KO SE ZMENIMO!
+
+PAR NASVETOV
+
+ne pozabit pullat nove verzije, potem ko bomo naredili in commitali en development cycle
+
+En development cycle bo trajal en mandat vodje, predlagam, da si vsakič na novo damo majhne cilje in jih izpolnimo, da bomo imeli po vsakem ciklu neko delujočo verzijo
+
+za Unity bom jaz ustvaril projekt in ga skonfiguriral, vi boste morali nastaviti svoj Git, da bo ignoriral določene fajle
+
+kdorkoli bo delal assete, naj za take stvari ne uporablja Gita (DropBox?)
