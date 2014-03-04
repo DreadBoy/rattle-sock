@@ -1,0 +1,12 @@
+1. namesti git
+  1.1 izberi, da ti namesti git bash
+  1.2 izberi, da ti doda spremenljivko PATH
+2. skonfiguiraj
+  2.1 odpri git bash
+  2.2 ustvari novo mapo na pravem mestu (mkdir rattle-sock)
+  2.3 s CodePlex potegni in namesti git-credential-winstore, če ti crashne, probaj namestit še iz git basha (cd do folderja, nato ime fila)
+  2.4 nastavi svoje github ime in mail z (git config —global user.name "Your Name Here") in (git config —global user.email "your_email@youremail.com")
+  2.5 git init, da ustvari skrito git mapo
+  2.6 git pull https://github.com/DreadBoy/rattle-sock.git, da pullaš
+  2.7 WORK TILL YOU DROP!
+  2.8 git push
