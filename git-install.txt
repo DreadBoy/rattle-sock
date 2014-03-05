@@ -11,9 +11,8 @@
 3. uporabljaj
   3.1 git clone https://github.com/DreadBoy/rattle-sock.git, da ustvariš lokalno kopijo
   3.2 WORK TILL YOU DROP!
-  3.3 git add <ime fila> | to doda fajl za version control
-  3.4 git commit -m 'komentar' shranite spremembo, ki je še vedno samo lokalna
-  3.5 git push | svojo lokalno kopijo prenesete v repozitorij TO DELATE SAMO PREDEN SE MENJA VODJA, KO SE ZMENIMO!
+  3.3 git commit -a -m 'komentar' shranite spremembo, ki je še vedno samo lokalna
+  3.4 git push | svojo lokalno kopijo prenesete v repozitorij TO DELATE SAMO PREDEN SE MENJA VODJA, KO SE ZMENIMO!
 
 PAR NASVETOV
 
