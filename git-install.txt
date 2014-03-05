@@ -6,14 +6,14 @@
   2.2 ustvari novo mapo na pravem mestu (mkdir rattle-sock)
   2.3 s CodePlex potegni in namesti git-credential-winstore, če ti crashne, probaj namestit še iz git basha (cd do folderja, nato ime fila)
   2.4 nastavi svoje github ime in mail z (git config —global user.name "Your Name Here") in (git config —global user.email "your_email@youremail.com")
-  2.5 git init, da ustvari skrito git mapo
+  2.5 git init, da ustvari git mapo
   2.6 git remote add origin https://github.com/DreadBoy/rattle-sock.git poveste, da je cilj commitanja moj repozitorij
 3. uporabljaj
-  3.1 git pull https://github.com/DreadBoy/rattle-sock.git, da ustvariš lokalno kopijo
+  3.1 git clone https://github.com/DreadBoy/rattle-sock.git, da ustvariš lokalno kopijo
   3.2 WORK TILL YOU DROP!
   3.3 git add <ime fila> | to doda fajl za version control
   3.4 git commit -m 'komentar' shranite spremembo, ki je še vedno samo lokalna
-  3.5 git push origin master | svojo lokalno kopijo prenesete v repozitorij TO DELATE SAMO PREDEN SE MENJA VODJA, KO SE ZMENIMO!
+  3.5 git push | svojo lokalno kopijo prenesete v repozitorij TO DELATE SAMO PREDEN SE MENJA VODJA, KO SE ZMENIMO!
 
 PAR NASVETOV
 
