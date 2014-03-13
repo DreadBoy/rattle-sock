@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Movement : MonoBehaviour {
+    public int length = 7;
 	public float speed = 1f;
 	public Object člen;
 	private List<Object> členi = new List<Object>();
@@ -71,7 +72,7 @@ public class Movement : MonoBehaviour {
         for (int i = 0; i < členi.Count; i++)
             Destroy(členi[i]);
         členi.Clear();
-        for (int i = 5; i > 0; i--)
+        for (int i = length; i > 0; i--)
             členi.Add(Instantiate(člen, transform.position - transform.forward * i, Quaternion.identity));
     }
 
