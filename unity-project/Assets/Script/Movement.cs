@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour {
     public int length = 7;
 	public float speed = 1f;
 	public Object člen;
+    public int tocke = 5;
 	private List<Object> členi = new List<Object>();
 	private float time_span = 0;
     private struct orientation
@@ -59,7 +60,7 @@ public class Movement : MonoBehaviour {
 
     public void takeDamage()
     {
-        //tocke--;
+        tocke--;
         //check of Game Over
         resetLevel();
     }
@@ -77,7 +78,8 @@ public class Movement : MonoBehaviour {
     }
 
 	void OnTriggerEnter(Collider other) {
-        if (other.tag == "Enemy")
+        print("Zadeteke");
+        //if (other.tag == "Enemy")
             takeDamage();
 	}
 }
