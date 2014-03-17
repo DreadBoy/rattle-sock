@@ -3,14 +3,12 @@ using System.Collections;
 
 public class ZebljicekScript : MonoBehaviour {
 
-    float hitrost = 0.1f;
+    float hitrost = 10.0f;
     Vector3 smer = new Vector3(1.0f, 0.0f, 1.0f);
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
-        //smer.x = smer.x * (collision.contacts[0].normal.x * (-1));
-        //smer.z = smer.z * (collision.contacts[0].normal.z * (-1));
+        Debug.Log("bounce");
     }
 
     private void pozicioniraj()
@@ -21,6 +19,9 @@ public class ZebljicekScript : MonoBehaviour {
         {
             //fakn'rekurzija, SON!
             pozicioniraj();
+
+            //daj zebljicku hitrost
+            rigidbody.velocity = smer * hitrost;
         }
     }
 
@@ -32,6 +33,6 @@ public class ZebljicekScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(smer * hitrost);
+
 	}
 }
