@@ -8,7 +8,7 @@ public class ZebljicekScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("bounce");
+        //bounce
     }
 
     private void pozicioniraj()
