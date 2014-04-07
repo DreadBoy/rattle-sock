@@ -92,6 +92,7 @@ public class Movement : MonoBehaviour {
         {
             Debug.Log("objective touched");
             Destroy(other.gameObject);
+            tocke++;
         }
 	}
 }
