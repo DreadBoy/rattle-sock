@@ -87,5 +87,11 @@ public class Movement : MonoBehaviour {
 
         if (other.tag == "Enemy")
             takeDamage();
+
+        if (other.tag == "Objective")
+        {
+            Debug.Log("objective touched");
+            Destroy(other.gameObject);
+        }
 	}
 }
