@@ -607,7 +607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 9
-  speed: 4
   tail_part: {fileID: 100000, guid: 407d5281a8892854d9fefee2edd8b1e3, type: 2}
   tocke: 5
 --- !u!23 &276210963
@@ -1559,6 +1558,10 @@ Prefab:
     - target: {fileID: 400000, guid: 415c922b552da00469be605869e51607, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 415c922b552da00469be605869e51607, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 415c922b552da00469be605869e51607, type: 2}

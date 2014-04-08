@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     public int length = 7;
-	public float speed = 2f;
+	private float speed = 2f;
 	public Object tail_part;
     public int tocke = 5;
 	private List<Object> tail = new List<Object>();
@@ -44,12 +44,19 @@ public class Movement : MonoBehaviour {
             time_span -= 0.2f / speed;
 			moveSock();
 		}
+
         if (tocke < 1)
         {
             GameObject.Find("Zgornja vrata").renderer.enabled = false;
             GameObject.Find("NextLevel").collider.enabled = true;
         }
-
+        
+        //Debug.Log(GameObject.FindGameObjectsWithTag("Objective").Length);
+        if (GameObject.FindGameObjectsWithTag("Objective").Length == 0)
+        {
+            GameObject.Find("Zgornja vrata").renderer.enabled = false;
+            GameObject.Find("NextLevel").collider.enabled = true;
+        }
 
 	}
 
@@ -87,6 +94,8 @@ public class Movement : MonoBehaviour {
 
         if (other.tag == "Objective")
         {
+            tail.Add(Instantiate(tail_part, transform.position - transform.forward, Quaternion.identity));
+            ((GameObject)tail[tail.Count - 1]).collider.enabled = true;
             Debug.Log("objective touched");
             Destroy(other.gameObject);
             tocke++;
