@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     public int length = 7;
-	public float speed = 1f;
+	public float speed = 2f;
 	public Object tail_part;
     public int tocke = 5;
 	private List<Object> tail = new List<Object>();
