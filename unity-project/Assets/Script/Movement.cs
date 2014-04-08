@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Movement : MonoBehaviour {
     public int length = 7;
@@ -73,9 +71,8 @@ public class Movement : MonoBehaviour {
 
     private void resetLevel()
     {
-        GameObject glava = GameObject.Find("Head");
-        glava.transform.position = new Vector3(0.5f, 0.5f, -13.5f);
-        glava.transform.rotation = orientation.up;
+        transform.position = new Vector3(0.5f, 0.5f, -14.5f);
+        transform.rotation = orientation.up;
         for (int i = 0; i < tail.Count; i++)
             Destroy(tail[i]);
         tail.Clear();
