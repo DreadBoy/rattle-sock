@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Script;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
     public int length = 7;
-	private float speed = 2f;
+	private float speed = 0.25f;
 	public Object tail_part;
     public int tocke = 5;
 	private List<Object> tail = new List<Object>();
 	private float time_span = 0;
-    private struct orientation
-    {
-        public static Quaternion up = Quaternion.Euler(0, 0, 0);
-        public static Quaternion right = Quaternion.Euler(0, 90, 0);
-        public static Quaternion down = Quaternion.Euler(0, 180, 0);
-        public static Quaternion left = Quaternion.Euler(0, 270, 0);
-    }
+
+    public bool right = false;
+    public bool left = false;
+    public bool first_person = true;
+	Orientation orientation = new Orientation();
 
 	// Use this for initialization
 	void Start () {
@@ -24,25 +23,43 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.RightArrow) && transform.localRotation != orientation.left) {
-			transform.localRotation = orientation.right;
+		if (Input.GetKey (KeyCode.RightArrow) && orientation.Direction != Orientation.direction.LEFT) {
+            if(first_person){
+                if(!right) //če prej ni bila desno
+					orientation.rotateRight();
+			}		
+            else
+                orientation.Direction = Orientation.direction.RIGHT;
+            right = true;
 		}
-		else if (Input.GetKey (KeyCode.DownArrow) && transform.localRotation != orientation.up) {
-			transform.localRotation = orientation.down;
+		else if (Input.GetKey (KeyCode.DownArrow) && orientation.Direction != Orientation.direction.UP) {
+			if (!first_person)
+				orientation.Direction = Orientation.direction.DOWN;
 		}
-        else if (Input.GetKey(KeyCode.LeftArrow) && transform.localRotation != orientation.right)
+		else if (Input.GetKey(KeyCode.LeftArrow) && orientation.Direction != Orientation.direction.RIGHT) {
+			if (first_person){
+				if(!left)
+					orientation.rotateLeft();
+			}
+			else
+				orientation.Direction = Orientation.direction.LEFT;
+			left = true;
+		}
+		else if (Input.GetKey(KeyCode.UpArrow) && orientation.Direction != Orientation.direction.DOWN)
         {
-			transform.localRotation = orientation.left;
+			if (!first_person)
+				orientation.Direction = Orientation.direction.UP;
 		}
-        else if (Input.GetKey(KeyCode.UpArrow) && transform.localRotation != orientation.down)
-        {
-			transform.localRotation = orientation.up;
-		}
+		transform.localRotation = orientation.getQuaternion();
+		if (!Input.GetKey (KeyCode.RightArrow))
+			right = false;
+		if (!Input.GetKey (KeyCode.LeftArrow))
+			left = false;
 		time_span += Time.deltaTime;
         if (time_span > 0.2f / speed)
         {
             time_span -= 0.2f / speed;
-			moveSock();
+            moveSock();
 		}
 
         if (tocke < 1)
@@ -57,7 +74,6 @@ public class Movement : MonoBehaviour {
             GameObject.Find("Zgornja vrata").renderer.enabled = false;
             GameObject.Find("NextLevel").collider.enabled = true;
         }
-
 	}
 
 	private void moveSock()
@@ -79,7 +95,9 @@ public class Movement : MonoBehaviour {
     private void resetLevel()
     {
         transform.position = new Vector3(0.5f, 0.5f, -14.5f);
-        transform.rotation = orientation.up;
+		//obrni navzgor
+		orientation.Direction = Orientation.direction.UP;
+		transform.rotation = orientation.getQuaternion ();
         for (int i = 0; i < tail.Count; i++)
             Destroy(tail[i]);
         tail.Clear();
