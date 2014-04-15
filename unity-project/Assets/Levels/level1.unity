@@ -567,8 +567,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1526750872}
+  m_Children: []
   m_Father: {fileID: 1947317701}
 --- !u!65 &276210960
 BoxCollider:
@@ -1204,7 +1203,7 @@ GameObject:
   - 4: {fileID: 1102461459}
   - 20: {fileID: 1102461463}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Minimap Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,8 +1716,9 @@ GameObject:
   - 92: {fileID: 1526750870}
   - 124: {fileID: 1526750869}
   - 81: {fileID: 1526750868}
+  - 114: {fileID: 1526750873}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: FPS Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1781,10 +1781,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1526750867}
   m_LocalRotation: {x: .182235524, y: 0, z: 0, w: .98325491}
-  m_LocalPosition: {x: 0, y: 4.19999981, z: -3.5}
+  m_LocalPosition: {x: 0, y: 4.69999981, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 276210959}
+  m_Father: {fileID: 1947317701}
+--- !u!114 &1526750873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1526750867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20743aaf2301f04f8a3c9111487e2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 276210959}
+  distance: 10
+  height: 5
+  heightDamping: 2
+  rotationDamping: 20
 --- !u!1 &1947317700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1830,7 @@ Transform:
   - {fileID: 531322134}
   - {fileID: 1472056563}
   - {fileID: 633959208}
+  - {fileID: 1526750872}
   - {fileID: 276210959}
   - {fileID: 1102461459}
   - {fileID: 523755109}
