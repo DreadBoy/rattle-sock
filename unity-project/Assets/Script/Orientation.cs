@@ -41,7 +41,7 @@ namespace Assets.Script
             Random rand = new Random();
             int Y = rand.Next(0, 3);
 			int count = 0;
-			while ((Y == orient || Y == (orient + 2)%4) && count < 10)
+			while (Y == orient || Y != (orient + 2)%4 || count < 10)
             {
                 Y = rand.Next(0, 3);
 				count++;
