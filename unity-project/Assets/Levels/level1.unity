@@ -614,8 +614,6 @@ MonoBehaviour:
   speed: 2
   tail_part: {fileID: 100000, guid: 407d5281a8892854d9fefee2edd8b1e3, type: 2}
   tocke: 5
-  right: 0
-  left: 0
   first_person: 1
 --- !u!23 &276210963
 Renderer:

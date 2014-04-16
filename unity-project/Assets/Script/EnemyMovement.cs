@@ -29,26 +29,25 @@ public class EnemyMovement : MonoBehaviour
         if (time_span > 0.2f / speed)
         {
             time_span -= 0.2f / speed;
-            if(rand_turn.Next(0, 10) == 0){
-                //orientation.random();
-				transform.localRotation = orientation.getQuaternion();
-			}
-            else
-                moveSock();
+            moveSock();
         }
     }
 
     private void moveSock()
     {
+		//premakni glavo
         transform.position += transform.forward;
+		//uniči zadnji člen repa
         Destroy(tail[0]);
         tail.RemoveAt(0);
+		//dodaj prvi člen repa
         tail.Add(Instantiate(tail_part, transform.position - transform.forward, Quaternion.identity));
         ((GameObject)tail[tail.Count - 1]).collider.enabled = true;
     }
 
     public void avoidObstacle()
     {
+		//zasukaj se v desno, da se izogneš tarči
 		orientation.rotateRight();
 		transform.localRotation = orientation.getQuaternion ();
     }
@@ -69,10 +68,8 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("Collide");
         if (other.tag == "Enemy" || other.tag == "Player")
         {
-            print("Avoiding");
             avoidObstacle();
         }
     }

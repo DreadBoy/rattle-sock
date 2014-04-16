@@ -10,10 +10,14 @@ public class Movement : MonoBehaviour
     public int tocke = 5;
     private List<Object> tail = new List<Object> ();
     private float time_span = 0;
-    public bool right = false;
-    public bool left = false;
+
     public bool first_person = true;
     Orientation orientation = new Orientation ();
+	struct keyboard_state{
+		public static bool right;
+		public static bool left;
+	}
+
 
     // Use this for initialization
     void Start ()
@@ -27,12 +31,12 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey (KeyCode.RightArrow)) { //če je pritisnil desno tipko
             if (first_person) {
-                if (!right) //če prej ni bila desno
+				if (!keyboard_state.right) //če prej ni bila pristisnjena desno
                     orientation.rotateRight ();
             } else if (orientation.Direction != Orientation.direction.LEFT) { //če prej ni bil obrnjen levo
                 orientation.Direction = Orientation.direction.RIGHT;
             }
-            right = true;
+			keyboard_state.right = true;
         } else if (Input.GetKey (KeyCode.DownArrow)) {
             if (!first_person) {
                 if (orientation.Direction != Orientation.direction.UP)
@@ -40,35 +44,35 @@ public class Movement : MonoBehaviour
             }
         } else if (Input.GetKey (KeyCode.LeftArrow)) {
             if (first_person) {
-                if (!left)
+				if (!keyboard_state.left)
                     orientation.rotateLeft ();
             } else if (orientation.Direction != Orientation.direction.RIGHT) {
                 orientation.Direction = Orientation.direction.LEFT;
             }
-            left = true;
+			keyboard_state.left = true;
         } else if (Input.GetKey (KeyCode.UpArrow)) {
             if (!first_person) {
                 if (orientation.Direction != Orientation.direction.DOWN) 
                     orientation.Direction = Orientation.direction.UP;
             }
         }
+		//nastavi rotacijo glede na spremembe zgoraj
         transform.localRotation = orientation.getQuaternion ();
+		//preveri spuščene tipke
         if (!Input.GetKey (KeyCode.RightArrow))
-            right = false;
+			keyboard_state.right = false;
         if (!Input.GetKey (KeyCode.LeftArrow))
-            left = false;
+			keyboard_state.left = false;
+		//prištej števec
         time_span += Time.deltaTime;
+		//če je čas za nov update
         if (time_span > 0.2f / speed) {
             time_span -= 0.2f / speed;
             moveSock ();
         }
 
-        if (tocke < 1) {
-            GameObject.Find ("Zgornja vrata").renderer.enabled = false;
-            GameObject.Find ("NextLevel").collider.enabled = true;
-        }
         
-        //Debug.Log(GameObject.FindGameObjectsWithTag("Objective").Length);
+        //preveri, če smo pojedli vsa jabolka
         if (GameObject.FindGameObjectsWithTag ("Objective").Length == 0) {
             GameObject.Find ("Zgornja vrata").renderer.enabled = false;
             GameObject.Find ("NextLevel").collider.enabled = true;
@@ -77,44 +81,54 @@ public class Movement : MonoBehaviour
 
     private void moveSock ()
     {
+		//premakni glavo
         transform.position += transform.forward;
-        Destroy (tail [0]);
+        //uniči zadnji člen repa
+		Destroy (tail [0]);
         tail.RemoveAt (0);
+		//dodaj prvi člen repa
         tail.Add (Instantiate (tail_part, transform.position - transform.forward, Quaternion.identity));
         ((GameObject)tail [tail.Count - 1]).collider.enabled = true;
     }
 
     public void takeDamage ()
     {
+		//odštej točke 
         tocke--;
-        //check of Game Over
+        //TODO preveri za Game Over
         resetLevel ();
     }
 
     private void resetLevel ()
     {
+		//pozicioniraj na začetek
         transform.position = new Vector3 (0.5f, 0.5f, -14.5f);
         //obrni navzgor
         orientation.Direction = Orientation.direction.UP;
         transform.rotation = orientation.getQuaternion ();
+		//uniči rep
         for (int i = 0; i < tail.Count; i++)
             Destroy (tail [i]);
         tail.Clear ();
+		//ustvari rep
         for (int i = length; i > 0; i--)
             tail.Add (Instantiate (tail_part, transform.position - transform.forward * i, Quaternion.identity));
     }
 
     void OnTriggerEnter (Collider other)
     {
-
+		//če se zaleti v nasprotnika
         if (other.tag == "Enemy")
             takeDamage ();
-
+		//če se zaleti v jabolko
         if (other.tag == "Objective") {
+			//povečaj rep
             tail.Add (Instantiate (tail_part, transform.position - transform.forward, Quaternion.identity));
+			//omogoči hitbox predzadnjega člena 
             ((GameObject)tail [tail.Count - 1]).collider.enabled = true;
-            Debug.Log ("objective touched");
+			//uniči jabolko
             Destroy (other.gameObject);
+			//povečaj točke
             tocke++;
         }
     }
