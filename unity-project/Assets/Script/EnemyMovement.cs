@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     public Object tail_part;
     private List<Object> tail = new List<Object>();
     private float time_span = 0;
-    private Random rand_turn = new Random();
 	
 	Orientation orientation = new Orientation();
 

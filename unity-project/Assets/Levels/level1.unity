@@ -1808,6 +1808,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1947317701}
   - 114: {fileID: 1947317702}
+  - 114: {fileID: 1947317703}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1846,6 +1847,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hrosc: {fileID: 100000, guid: e0080372ae185144e8d2faab40c42299, type: 2}
+--- !u!114 &1947317703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1947317700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69699825f0f83842a7de9ab0aa66430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097417909
 GameObject:
   m_ObjectHideFlags: 0
