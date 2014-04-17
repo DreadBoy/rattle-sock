@@ -14,10 +14,13 @@ public class EnemyMovement : MonoBehaviour
     private float time_span = 0;
 	
 	Orientation orientation = new Orientation();
+	List<Object> breadcrumbs = new List<Object>();
+	public GameObject breadcrumb;
 
     // Use this for initialization
     void Start()
     {
+		PathFinder.createMatrix();
         resetPosition();
     }
 
@@ -28,7 +31,27 @@ public class EnemyMovement : MonoBehaviour
         if (time_span > 0.2f / speed)
         {
             time_span -= 0.2f / speed;
-            moveSock();
+			int index = 0;
+			double cena = 0;
+			GameObject[] hroscs = GameObject.FindGameObjectsWithTag("Objective");
+			for (int i = 0; i < hroscs.Length; i++) {
+				double cena_curr = PathFinder.dobiCeno(hroscs[i].transform.localPosition, transform.localPosition);
+				if(cena_curr > cena){
+					cena = cena_curr;
+					index = i;
+				}
+			}
+			foreach (Object crumb in breadcrumbs) {
+				Destroy(crumb);
+			}
+			breadcrumbs.Clear();
+			List<Vector2> path = PathFinder.findPath (
+				new Vector2(transform.localPosition.x + 16, transform.localPosition.z + 16),
+				new Vector2(hroscs[index].transform.localPosition.x + 16.5f, hroscs[index].transform.localPosition.z + 16.5f));
+			foreach (Vector2 node in path) {
+				breadcrumbs.Add(Instantiate (breadcrumb, new Vector3(node.x - 16, 1f, node.y - 16), Quaternion.identity));
+			}
+			moveSock();
         }
     }
 

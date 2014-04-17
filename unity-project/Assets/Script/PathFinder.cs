@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class PathFinder
 {
 	private PathFinder() {}
-	
+	public static int[,] map = new int[33, 33];
+
 	class Node
 	{
 		float _X;
@@ -13,22 +15,23 @@ public class PathFinder
 		Vector2 _oce;
 		double _cena;
 		public Node() { }
-		public Node(Vector2 trenutni, Vector2 oce)
-		{
-			this._X = trenutni.x;
-			this._Y = trenutni.y;
-			this._oce = oce;
-		}
+        public Node(Vector2 trenutni, Vector2 oce, double cena)
+        {
+            this._X = trenutni.x;
+            this._Y = trenutni.y;
+            this._oce = oce;
+            this._cena = cena;
+        }
 		public Vector2 oce
 		{
 			get { return _oce; }
 			set { _oce = value; }
-		}
-		public double cena
-		{
-			get { return _cena; }
-			set { _cena = value; }
-		}
+        }
+        public double cena
+        {
+            get { return _cena; }
+            set { _cena = value; }
+        }
 		public float X
 		{
 			get { return _X; }
@@ -43,12 +46,39 @@ public class PathFinder
 		{
 			get { return new Vector2(_X, _Y); }
 			set { _X = value.x; _Y = value.y; }
+		}	
+	}
+
+	public static void createMatrix(){
+		//dodaj stene
+		for (int x = 0; x < 32; x++) {
+			map[x, 0] = 1;
+			map[x, 32] = 1;
+		}
+		for (int y = 0; y < 32; y++) {
+			map[0, y] = 1;
+			map[32, y] = 1;
 		}
 		
+		//dodaj ovire
+		foreach (Transform child in GameObject.Find ("Ovire").transform)
+		{
+			Vector3 pos = child.localPosition;
+			Vector3 sca = child.localScale;
+			for (int x = (int)pos.x; x <  (int)pos.x + (int)sca.x; x++) {
+				for (int z = (int)pos.z - Mathf.FloorToInt(sca.z/2); z < (int)pos.z + Mathf.CeilToInt(sca.z/2); z++) {
+					map[x+16, z+16] = 1;
+				}
+			}
+		}
 		
+		/*for (int x = 0; x < 32; x++)
+            for (int y = 0; y < 32; y++)
+                if(Amatrix[x, y] <= 0)
+                    Instantiate (Amatrix_prefab, new Vector3(x - 16, 0.5f, y - 16), Quaternion.identity);*/
 	}
-	
-	public static List<Vector2> findPath(Vector2 start, Vector2 goal, int[,] map)
+
+	public static List<Vector2> findPath(Vector2 start, Vector2 goal)
 	{
 		List<Vector2> path = new List<Vector2>();
 		
@@ -56,12 +86,14 @@ public class PathFinder
 		List<Node> zaprti = new List<Node>();
 		Node trenutni = new Node();
 		
+        bool force_break = false;
+
 		bool našel = false; //če ne najde, tudi poti ne sme naredit
 		
-		odprti.Insert(0, new Node(start, start));
+        odprti.Insert(0, new Node(start, start, dobiCeno(start, goal)));
 		
 		//*************ZAČETEK ZANKE***********
-		while (odprti.Count > 0)
+		while (odprti.Count > 0 && !force_break)
 		{
 			//poberemo naslednjega iz odprtih
 			zaprti.Insert(0, odprti[0]);
@@ -78,9 +110,11 @@ public class PathFinder
 				{
 					y = y2;
 					if (x != 0)
-						y = 0;
-					
-					trenutni = new Node(new Vector2(zaprti[0].X + x, zaprti[0].Y + y), zaprti[0].trenutni);
+                        y = 0;
+                    //tukaj dejansko začnem preverjat sosede
+
+                    //če sem na cilju
+                    trenutni = new Node(new Vector2(zaprti[0].X + x, zaprti[0].Y + y), zaprti[0].trenutni, dobiCeno(new Vector2(zaprti[0].X + x, zaprti[0].Y + y), goal));
 					if (trenutni.trenutni == goal)
 					{
 						našel = true;
@@ -88,8 +122,10 @@ public class PathFinder
 					}
 					
 					bool preskoči = false;
+                    //če je trenutni ovira, potem preskoči
 					if(map[(int)trenutni.trenutni.x, (int)trenutni.trenutni.y] > 0)
 						preskoči = true;
+                    //če sem ga že pregledal, potem preskoči
 					for(int i = 0; i< zaprti.Count; i++)
 					{
 						if(zaprti[i].trenutni == trenutni.trenutni){
@@ -97,12 +133,16 @@ public class PathFinder
 							break;
 						}
 					}
+                    //če ga ne preskočim
 					if (!preskoči)
 					{
+                        //ga dodam za pregled
+                        //če je edini za pregledat, da samo dodaj
 						if (odprti.Count == 0)
 						{
 							odprti.Insert(0, trenutni);
 						}
+                        //drugače preglej obstoječe uteži in ga dodaj na pravo mesto
 						else if (odprti.Count > 0)
 						{
 							int mesto = odprti.Count;
@@ -136,5 +176,9 @@ public class PathFinder
 		}
 		return path;
 	}
+    public static double dobiCeno(Vector2 point1, Vector2 point2)
+    {
+        return Math.Sqrt(Math.Pow((point1.x - point2.x), 2.0) + Math.Pow((point1.y - point2.y), 2.0));
+    }
 
 }
