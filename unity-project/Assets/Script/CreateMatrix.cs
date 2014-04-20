@@ -35,13 +35,14 @@ public class CreateMatrix : MonoBehaviour {
                 if(Amatrix[x, y] <= 0)
                     Instantiate (Amatrix_prefab, new Vector3(x - 16, 0.5f, y - 16), Quaternion.identity);
 */
-		List<Vector2> path = PathFinder.findPath (new Vector2 (1, 1), new Vector2 (12, 18));
+		/* List<Vector2> path = PathFinder.findPath (new Vector2 (1, 1), new Vector2 (12, 18));
         List<Object> breadcrumbs = new List<Object>();
         foreach (Vector2 node in path) {
             print (node.x + " " + node.y);
             //breadcrumbs.Add(Instantiate (breadcrumb, new Vector3(node.x - 16, 1f, node.y - 16), Quaternion.identity));
 			//((GameObject)breadcrumbs[breadcrumbs.Count - 1]).transform.parent = GameObject.Find ("Level").transform;
 		}
+		*/
 	}
 	
 	// Update is called once per frame

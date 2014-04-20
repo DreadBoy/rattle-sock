@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     public int length = 7;
     public float speed = 0.25f;
     public Object tail_part;
-    public int tocke = 5;
+    public static int tocke = 5;
     private List<Object> tail = new List<Object> ();
     private float time_span = 0;
 
@@ -93,8 +93,6 @@ public class Movement : MonoBehaviour
 
     public void takeDamage ()
     {
-		//odštej točke 
-        tocke--;
         //TODO preveri za Game Over
         resetLevel ();
     }

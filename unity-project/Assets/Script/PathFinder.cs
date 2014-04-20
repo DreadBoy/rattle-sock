@@ -72,6 +72,7 @@ public class PathFinder
 			}
 		}
 		
+        //vizualno prikaži matriko
 		/*for (int x = 0; x < 32; x++)
             for (int y = 0; y < 32; y++)
                 if(Amatrix[x, y] <= 0)
@@ -80,6 +81,8 @@ public class PathFinder
 
 	public static List<Vector2> findPath(Vector2 start, Vector2 goal)
 	{
+        if (start.x < 0 || start.x > 32 || start.y < 0 || start.y > 32)
+            return new List<Vector2>();
 		List<Vector2> path = new List<Vector2>();
 		
 		List<Node> odprti = new List<Node>();
@@ -122,6 +125,11 @@ public class PathFinder
 					}
 					
 					bool preskoči = false;
+                    //če je izven mape, potem preskoči
+                    if ((int)trenutni.trenutni.x < 0 || (int)trenutni.trenutni.x > map.GetLength(0))
+                        preskoči = true;
+                    if ((int)trenutni.trenutni.y < 0 || (int)trenutni.trenutni.y > map.GetLength(0))
+                        preskoči = true;
                     //če je trenutni ovira, potem preskoči
 					if(map[(int)trenutni.trenutni.x, (int)trenutni.trenutni.y] > 0)
 						preskoči = true;
