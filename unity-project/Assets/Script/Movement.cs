@@ -90,7 +90,6 @@ public class Movement : MonoBehaviour {
 
         if (other.tag == "Objective")
         {
-            Debug.Log("objective touched");
             Destroy(other.gameObject);
             tocke++;
         }
