@@ -3,7 +3,11 @@ using System.Collections;
 
 //https://gist.github.com/Hamcha/6096905
 public class SmoothFollow : MonoBehaviour {
-    
+
+    void Start()
+    {
+        target = GameObject.Find("Head").transform;
+    }
     // The target we are following
     public Transform target;
     // The distance in the x-z plane to the target

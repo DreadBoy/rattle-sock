@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public int length = 7;
-    public float speed = 0.25f;
     public Object tail_part;
     public static int tocke = 5;
     private List<Object> tail = new List<Object> ();
@@ -28,7 +26,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-
         if (Input.GetKey (KeyCode.RightArrow)) { //če je pritisnil desno tipko
             if (first_person) {
 				if (!keyboard_state.right) //če prej ni bila pristisnjena desno
@@ -66,8 +63,8 @@ public class Movement : MonoBehaviour
 		//prištej števec
         time_span += Time.deltaTime;
 		//če je čas za nov update
-        if (time_span > 0.2f / speed) {
-            time_span -= 0.2f / speed;
+        if (time_span > 0.2f / GameManager.move_speed) {
+            time_span -= 0.2f / GameManager.move_speed;
             moveSock ();
         }
 
@@ -109,7 +106,7 @@ public class Movement : MonoBehaviour
             Destroy (tail [i]);
         tail.Clear ();
 		//ustvari rep
-        for (int i = length; i > 0; i--)
+        for (int i = GameManager.start_length; i > 0; i--)
             tail.Add (Instantiate (tail_part, transform.position - transform.forward * i, Quaternion.identity));
     }
 

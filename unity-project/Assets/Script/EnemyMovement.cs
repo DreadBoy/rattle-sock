@@ -7,8 +7,6 @@ using Assets.Script;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public int length = 7;
-    public float speed = 1f;
     public Object tail_part;
     private List<Object> tail = new List<Object>();
     private float time_span = 0;
@@ -31,9 +29,9 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         time_span += Time.deltaTime;
-        if (time_span > 0.2f / speed)
+        if (time_span > 0.2f / GameManager.move_speed)
         {
-            time_span -= 0.2f / speed;
+            time_span -= 0.2f / GameManager.move_speed;
             if (path.Count <= 0)
                 findTarget();
             followPath();
@@ -128,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
             Destroy(tail[i]);
         tail.Clear();
         //ustvarim rep
-        for (int i = length; i > 0; i--)
+        for (int i = GameManager.start_length; i > 0; i--)
             tail.Add(Instantiate(tail_part, transform.position - transform.forward * i, Quaternion.identity));
     }
 
