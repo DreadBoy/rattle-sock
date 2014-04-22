@@ -63,7 +63,7 @@ public class PathFinder : MonoBehaviour
         }
 
         //vizualno prikaži matriko
-        /*for (int x = 0; x < 32; x++)
+        /*or (int x = 0; x < 32; x++)
             for (int y = 0; y < 32; y++)
                 if(map[x, y] <= 0)
                     Instantiate(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Amatrix.prefab", typeof(Transform)), new Vector3(x - 15.5f, 0.5f, y - 15.5f), Quaternion.identity);
