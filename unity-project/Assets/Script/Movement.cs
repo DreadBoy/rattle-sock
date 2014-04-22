@@ -114,7 +114,8 @@ public class Movement : MonoBehaviour
     {
 		//če se zaleti v nasprotnika
         if (other.tag == "Enemy")
-            takeDamage ();
+            takeDamage();
+
 		//če se zaleti v jabolko
         if (other.tag == "Objective") {
 			//povečaj rep
