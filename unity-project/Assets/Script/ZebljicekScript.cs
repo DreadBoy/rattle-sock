@@ -33,6 +33,7 @@ public class ZebljicekScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        //vrtenje okrog osi
+        this.transform.Rotate(new Vector3(0.0f, 0.0f, 10.0f));
 	}
 }

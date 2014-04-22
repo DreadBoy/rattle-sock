@@ -18,9 +18,14 @@ public class SpawnHroscScript : MonoBehaviour {
 
         //ce je znotraj ovire, ali drugega hosca try again
         //znotraj ovire
-        /*if( wtf kak naj to preverim?){ */
+        if (PathFinder.createMatrix()[(int)x + 15, (int)z + 15] > 0)
+        {
+            pozicioniraj();
+        }
+        else
+        {
             //znotraj hrosca
-            if(hroscListCount > 0)
+            if (hroscListCount > 0)
             {
                 for (int j = 0; j < hroscListCount; j++)
                 {
@@ -39,7 +44,7 @@ public class SpawnHroscScript : MonoBehaviour {
             {
                 Instantiate(hrosc, new Vector3(x, 0.6f, z), new Quaternion());
             }
-        /*}*/
+        }
     }
 
 	// Use this for initialization
