@@ -69,3 +69,5 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
   - enabled: 1
     path: Assets/Scenes/HallOfFame.unity
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity

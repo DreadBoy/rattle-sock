@@ -89,7 +89,9 @@ public class Movement : MonoBehaviour
 
     public void takeDamage ()
     {
-        //TODO preveri za Game Over
+        GameManager.lifes--;
+        if (GameManager.lifes <= 0)
+            Application.LoadLevel("EndScreen");
         resetLevel ();
     }
 

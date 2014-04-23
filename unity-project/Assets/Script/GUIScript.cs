@@ -42,6 +42,7 @@ public class GUIScript : MonoBehaviour
                 Application.LoadLevel("MainMenu");
             if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 40, 120, 40), "New game", button_style))
             {
+                GameManager.resetGame();
                 GameManager.pause = false;
                 Application.LoadLevel(0);
             }
