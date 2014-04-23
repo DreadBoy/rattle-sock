@@ -5,7 +5,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Object tail_part;
-    public static int tocke = 5;
     private List<Object> tail = new List<Object> ();
     private float time_span = 0;
 
@@ -125,7 +124,7 @@ public class Movement : MonoBehaviour
 			//uniči jabolko
             Destroy (other.gameObject);
 			//povečaj točke
-            tocke++;
+            GameManager.points++;
         }
     }
 }

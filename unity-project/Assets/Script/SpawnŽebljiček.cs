@@ -10,11 +10,6 @@ public class SpawnŽebljiček : MonoBehaviour {
 	GameObject[] žebljičekList;
 	int žebljičekListCount = 0;
 	
-	void OnCollisionEnter(Collision collision)
-	{
-		//bounce
-	}
-	
 	private void ustvariŽebljiček(){
 		bool inside;
 		float x;
@@ -46,20 +41,6 @@ public class SpawnŽebljiček : MonoBehaviour {
 		
 	}
 	
-	private void pozicioniraj()
-	{
-		transform.position = new Vector3(Random.Range(15.5f, -14.5f), 0.6f, Random.Range(15.5f, -14.5f));
-		//ce je pozicija v centru (nocemo umret takoj na zacetku igre)
-		if ((transform.position.x > -6.5f && transform.position.x < 6.5f) || (transform.position.z > -9.0f && transform.position.z < 9.0f))
-		{
-			//fakn'rekurzija, SON!
-			pozicioniraj();
-			
-			//daj zebljicku hitrost
-			rigidbody.velocity = smer * hitrost;
-		}
-	}
-	
 	void Awake(){
 		žebljičekList = new GameObject[10];
 		
@@ -67,19 +48,6 @@ public class SpawnŽebljiček : MonoBehaviour {
 		for (int i = 0; i < GameManager.žebljiček_count; i++)
 		{
 			ustvariŽebljiček();
-		}
-	}
-	
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		//vrtenje okrog osi
-		for (int i = 0; i < žebljičekListCount; i++)
-		{
-			žebljičekList[i].transform.Rotate(new Vector3(0.0f, 0.0f, 10.0f));
 		}
 	}
 }

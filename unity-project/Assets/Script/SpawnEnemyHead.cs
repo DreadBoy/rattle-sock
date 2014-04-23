@@ -44,8 +44,4 @@ public class SpawnEnemyHead : MonoBehaviour {
 			ustvariEnemyHead();
 		}
 	}
-	
-	// Use this for initialization
-	void Start () {
-	}
 }
