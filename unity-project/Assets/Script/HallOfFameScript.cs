@@ -4,18 +4,6 @@ using System.Collections.Generic;
 
 public class HallOfFameScript : MonoBehaviour
 {
-
-
-
-    void Start()
-    {
-        /*GameManager.highScores.Add(new GameManager.ScoreEntry
-        {
-            name = "Matic",
-            score = 100
-        });*/
-    }
-
     void OnGUI()
     {
         GUIStyle label_style = new GUIStyle(GUI.skin.label);
@@ -33,12 +21,18 @@ public class HallOfFameScript : MonoBehaviour
         GUIStyle box_style = new GUIStyle(GUI.skin.box);
         box_style.padding = new RectOffset(15, 15, 15, 15);
 
-        int box_height = 80 + 25 * GameManager.highScores.Count + 40 + 20;
+        int box_height = 150 + 30 * GameManager.highScores.Count;
 
-        GUILayout.BeginArea(new Rect(Screen.width / 2 - 110, Screen.height / 2 - 90, 220, 180), box_style);
+        GUILayout.BeginArea(new Rect(Screen.width / 2 - 110, Screen.height / 2 - box_height / 2, 220, box_height), box_style);
         GUILayout.BeginVertical();
 
         GUILayout.Label("Hall of Fame", menu_style);
+
+        if (GUILayout.Button("Reset", button_style))
+        {
+            GameManager.highScoresClear();
+            Application.LoadLevel("HallOfFame");
+        }
 
         for (int i = 0; i < GameManager.highScores.Count; i++)
             GUILayout.Label(string.Format("{0} : {1:#,0}", GameManager.highScores[i].name, GameManager.highScores[i].score), label_style);

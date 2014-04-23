@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1160991205}
   - 114: {fileID: 1160991206}
+  - 114: {fileID: 1160991207}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -110,6 +111,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e448126baa6f9b4abee03bc73e3db9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1160991207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160991204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c99bf278e28a4b8b50c0552e6b361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1750995785

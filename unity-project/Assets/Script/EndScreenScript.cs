@@ -1,20 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class EndScreenScript : MonoBehaviour
 {
     string player_name = "";
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void OnGUI()
     {
@@ -46,9 +36,9 @@ public class EndScreenScript : MonoBehaviour
 
         GUILayout.BeginHorizontal();
 
-        if (GUILayout.Button("OK", button_style) && name.Length > 0)
+        if (GUILayout.Button("OK", button_style) && !String.IsNullOrEmpty(player_name))
         {
-            GameManager.highScores.Add(new GameManager.ScoreEntry
+            GameManager.highScoresAdd(new GameManager.ScoreEntry
             {
                 name = player_name,
                 score = GameManager.points

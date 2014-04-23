@@ -3,16 +3,6 @@ using System.Collections;
 
 public class MainMenuScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     void OnGUI()
     {
         GUIStyle menu_style = new GUIStyle(GUI.skin.label);
@@ -42,10 +32,6 @@ public class MainMenuScript : MonoBehaviour {
         }
 
         GUILayout.EndVertical();
-        GUILayout.EndArea();
-
-        
-        
-        
+        GUILayout.EndArea(); 
     }
 }
