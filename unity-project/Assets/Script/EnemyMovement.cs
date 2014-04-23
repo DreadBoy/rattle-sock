@@ -32,9 +32,9 @@ public class EnemyMovement : MonoBehaviour
         if (time_span > 0.2f / GameManager.move_speed)
         {
             time_span -= 0.2f / GameManager.move_speed;
-            if (path.Count <= 0)
-                findTarget();
-            followPath();
+            //if (path.Count <= 0)
+            //    findTarget();
+            //followPath();
             moveSock();
         }
     }
