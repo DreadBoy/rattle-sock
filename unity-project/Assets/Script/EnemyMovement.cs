@@ -138,7 +138,6 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (other.tag == "Objective")
         {
-            print("Objective");
             //povečaj rep
             tail.Add(Instantiate(tail_part, transform.position - transform.forward, Quaternion.identity));
             //omogoči hitbox predzadnjega člena 

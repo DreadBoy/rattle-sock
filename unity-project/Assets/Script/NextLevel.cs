@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 using System.Text.RegularExpressions;
 using System;
 
@@ -27,9 +26,9 @@ public class NextLevel : MonoBehaviour {
 
     private void loadNextLevel()
     {
-
-        Application.LoadLevel(loadedLevel);
-        Debug.Log(loadedLevel);
+        if (loadedLevel == 30)
+            Application.LoadLevel("EndScreen");
+        Application.LoadLevel("level" + loadedLevel);
 
     }
 }

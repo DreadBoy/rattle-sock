@@ -57,9 +57,14 @@ public class GameManager : MonoBehaviour
         get { return _highScores; }
     }
     public static void highScoresAdd(ScoreEntry entry){
-        while (_highScores.Count >= 5)
-            _highScores.RemoveAt(0);
         _highScores.Add(entry);
+        _highScores.Sort(delegate(ScoreEntry x, ScoreEntry y)
+        {
+            return y.score.CompareTo(x.score);
+        });
+
+        while (_highScores.Count > 5)
+            _highScores.RemoveAt(_highScores.Count - 1);
         SaveScores();
     }
     public static void highScoresClear()
