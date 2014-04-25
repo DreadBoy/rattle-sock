@@ -20,10 +20,9 @@ public class HroščScript : MonoBehaviour
 
         if (Time.time >= timer)
         {
-            if (Random.Range(0.0f, 100.0f) > 90.0f) //random možnost, da se spremeni
+            if (Random.Range(0.0f, 100.0f) > 98.0f) //random možnost, da se spremeni
             {
-                Instantiate(zlati_hrosc, transform.localPosition, new Quaternion()); //ustvari novega zlatega hrošča
-                Destroy(transform.gameObject); //odstrani starega navadnega hrošča
+                SpawnHrošč.upgradeHrošč(transform.gameObject);
             }
             timer = Time.time + interval;
         }

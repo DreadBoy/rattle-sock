@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HroščZlatiScript : MonoBehaviour
 {
-    float interval = 1; //čez 10 sekund
+    float interval = 3; //čez 3 sekunde
     float timer;
     // Use this for initialization
     void Start()
@@ -16,8 +16,7 @@ public class HroščZlatiScript : MonoBehaviour
     {
         if (Time.time >= timer)
         {
-            Destroy(transform.gameObject); //odstrani zlatega hrošča
-            SpawnHrošč.ustvariHrošč();
+            SpawnHrošč.respawnZlatiHrošč(transform.gameObject);
         }
     }
 }
