@@ -132,17 +132,30 @@ public class Movement : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //če se zaleti v nasprotnika
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy"){
             takeDamage();
+			//igraj zvok
+			if(other.GetComponent<AudioSource>() != null){
+				other.audio.Play();
+			}
+			else
+				this.GetComponents<AudioSource>()[2].Play();
+		}
 
         //če se zaleti v jabolko
         if (other.tag == "Objective")
         {
             //povečaj točke
-            if (other.name.Contains("HroščZlati"))
+            if (other.name.Contains("HroščZlati")){
                 GameManager.points += 10;
-            else
+				//igraj zvok
+				this.GetComponents<AudioSource>()[1].Play();
+			}
+            else{
                 GameManager.points++;
+				//igraj zvok
+				this.GetComponents<AudioSource>()[0].Play();
+			}
             //povečaj rep
             tail.Add(Instantiate(tail_part, transform.position - transform.forward, Quaternion.identity));
             //omogoči hitbox predzadnjega člena 

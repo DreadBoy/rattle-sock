@@ -21,6 +21,7 @@ public class NextLevel : MonoBehaviour {
     {
        
         if (other.name == "Head")
+			this.audio.Play();
             loadNextLevel();
     }
 
