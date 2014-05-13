@@ -107,8 +107,8 @@ public class Movement : MonoBehaviour
 
     public void takeDamage()
     {
-        GameManager.lifes--;
-        if (GameManager.lifes <= 0)
+        GameManager.lives--;
+        if (GameManager.lives <= 0)
             Application.LoadLevel("EndScreen");
         resetLevel();
     }

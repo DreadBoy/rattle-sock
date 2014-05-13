@@ -17,16 +17,17 @@ public class NextLevel : MonoBehaviour {
 	
 	}
 
-    void OnTriggerEnter(Collider other)
+    IEnumerator OnTriggerEnter(Collider other)
     {
-       
+        yield return new WaitForSeconds(2.0f);
         if (other.name == "Head")
-			this.audio.Play();
+			this.audio.Play();  
             loadNextLevel();
     }
 
     private void loadNextLevel()
     {
+        
         if (loadedLevel == 30)
             Application.LoadLevel("EndScreen");
         Application.LoadLevel("level" + loadedLevel);

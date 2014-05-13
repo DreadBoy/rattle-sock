@@ -41,12 +41,12 @@ public class GUIScript : MonoBehaviour
         GUIStyle box_style = new GUIStyle(GUI.skin.box);
         box_style.padding = new RectOffset(15, 15, 15, 15);
 
-        GUI.Label(new Rect(Screen.width / 3, 0, 1000, 1000), "POINTS: " + GameManager.points, točke_style);
+        GUI.Label(new Rect(Screen.width / 3, 0,500, 500), GameManager.points.ToString(), točke_style);
 
         string lifes_display = "";
-        for (int i = 0; i < GameManager.lifes; i++)
-            lifes_display += "|";
-        GUI.Label(new Rect(2 * Screen.width / 3, 0, 1000, 1000), lifes_display, točke_style);
+        for (int i = 0; i < GameManager.lives; i++)
+            lifes_display += "★";
+        GUI.Label(new Rect(2 * Screen.width / 3, 0, 500, 500), lifes_display, točke_style);
 
         if (GameManager.pause)
         {

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public static int points = 0;
     private static int max_lifes = 5;
-    public static int lifes = 5;
+    public static int lives = 5;
 
     protected GameManager() { }
 
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public static void resetGame()
     {
         points = 0;
-        lifes = max_lifes;
+        lives = max_lifes;
         pause = false;
     }
 
