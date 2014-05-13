@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 341e4e1962637b04882138400a224b40
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tailMesh: {fileID: 4300000, guid: 31e3575fe5f4c59468bfa2d114961943, type: 3}
+  - tail_part: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
