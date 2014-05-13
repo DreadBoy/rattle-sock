@@ -129,12 +129,18 @@ public class Movement : MonoBehaviour
         for (int i = GameManager.start_length; i > 0; i--)
             tail.Add(Instantiate(tail_part, transform.position - transform.forward * i, Quaternion.identity));
     }
-
+    System.Collections.IEnumerator wait(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+    }
     void OnTriggerEnter(Collider other)
     {
         //če se zaleti v nasprotnika
         if (other.tag == "Enemy"){
+            GameManager.move_speed = 0.0f;
+            wait(0.5f);
             takeDamage();
+            GameManager.move_speed = 2.0f;
 			//igraj zvok
 			if(other.GetComponent<AudioSource>() != null){
 				other.audio.Play();
