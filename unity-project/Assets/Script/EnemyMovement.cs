@@ -37,6 +37,10 @@ public class EnemyMovement : MonoBehaviour
             //followPath();
             moveSock();
         }
+        if (transform.position.x < -17 || transform.position.x > 17 || transform.position.z < -17 || transform.position.z > 17)
+        {
+            resetPosition();
+        }
     }
 
     private void moveSock()
