@@ -20,22 +20,24 @@ public class NextLevel : MonoBehaviour
 
     }
 
-    IEnumerator OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        Time.timeScale = 0;
-        yield return new WaitForSeconds(1);
-
-        Time.timeScale = 1;
         if (other.name == "Head")
         {
             this.audio.Play();
-            loadNextLevel();
+			StartCoroutine(loadNextLevel());
+            //loadNextLevel();
         }
 
     }
 
-    private void loadNextLevel()
+	IEnumerator loadNextLevel()
     {
+		GameManager.move_speed = 0;
+
+		yield return new WaitForSeconds(1);
+
+		GameManager.move_speed = 2;
 
         if (loadedLevel == 30)
             Application.LoadLevel("EndScreen");
