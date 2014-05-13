@@ -1059,6 +1059,7 @@ GameObject:
   - 124: {fileID: 449972835}
   - 81: {fileID: 449972834}
   - 114: {fileID: 449972833}
+  - 45: {fileID: 449972838}
   m_Layer: 0
   m_Name: FPS Camera
   m_TagString: MainCamera
@@ -1143,6 +1144,15 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
   m_OcclusionCulling: 1
+--- !u!45 &449972838
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4500000, guid: 5bcffd0fb41d76d4aaff34c3c6b73a84,
+    type: 2}
+  m_PrefabInternal: {fileID: 1467975954}
+  m_GameObject: {fileID: 449972831}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 16522f49031ff414abdf1f83f1b6a36c, type: 2}
 --- !u!1 &484253282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,7 +2398,7 @@ Transform:
   m_GameObject: {fileID: 999069099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: .5, z: -14}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 264643089}
 --- !u!65 &999069101
@@ -2463,7 +2473,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1427216906}
   m_GameObject: {fileID: 999069099}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 1ec235d6710f5974789a34d4a6acaa6e, type: 3}
 --- !u!82 &999069106
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2791,6 +2801,8 @@ GameObject:
   - 114: {fileID: 1105744710}
   - 114: {fileID: 1105744714}
   - 114: {fileID: 1105744713}
+  - 114: {fileID: 1105744716}
+  - 114: {fileID: 1105744715}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2862,6 +2874,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "\u017Eeblji\u010Dek": {fileID: 100000, guid: 415c922b552da00469be605869e51607,
     type: 2}
+--- !u!114 &1105744715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: e96efb8066083ad4c9637676dc63a46e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1425314902}
+  m_GameObject: {fileID: 1105744709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25ae9f9f8f908347a3a5aab8c5a0428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1105744716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: e96efb8066083ad4c9637676dc63a46e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1425314902}
+  m_GameObject: {fileID: 1105744709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e68a7b045d047c41a395b3b243a949b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1107905454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3495,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0c523dbfb819b8345ba1969c53758e25, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -5671,7 +5707,7 @@ GameObject:
   - 23: {fileID: 1926995562}
   m_Layer: 0
   m_Name: Zgornja vrata
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8

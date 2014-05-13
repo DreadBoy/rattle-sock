@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
     public Object tail_part;
     private List<Object> tail = new List<Object>();
     private float time_span = 0;
@@ -26,6 +27,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetKey(KeyCode.RightArrow))
         { //če je pritisnil desno tipko
             if (first_person)
@@ -117,7 +120,7 @@ public class Movement : MonoBehaviour
     private void resetLevel()
     {
         //pozicioniraj na začetek
-        transform.position = new Vector3(0.5f, 0.5f, -14.5f);
+        transform.position = new Vector3(0.5f, 0.55f, -14.5f);
         //obrni navzgor
         orientation.Direction = Orientation.direction.UP;
         transform.rotation = orientation.getQuaternion();
