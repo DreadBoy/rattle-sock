@@ -89,6 +89,7 @@ public class Movement : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Objective").Length == 0)
         {
             GameObject.Find("Zgornja vrata").renderer.enabled = false;
+            GameObject.Find("Zgornja vrata").collider.enabled = false;
             GameObject.Find("NextLevel").collider.enabled = true;
         }
     }
