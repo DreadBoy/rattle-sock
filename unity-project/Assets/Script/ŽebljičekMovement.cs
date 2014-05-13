@@ -13,6 +13,7 @@ public class ŽebljičekMovement : MonoBehaviour {
     {
         //vrtenje okrog osi
         transform.Rotate(new Vector3(0.0f, 0.0f, 10.0f * Time.timeScale));
+       
     }
 
     void OnCollisionEnter(Collision collision)
